@@ -6,7 +6,18 @@
 
 export function getAllWithdrawals(array) {
   // Your code goes here...
-
+  let result = [];
+  for (const elem of array) {
+    let sum = 0;
+    if (elem.hasOwnProperty("withdrawals")) {
+      sum = elem.withdrawals.reduce(
+        (acc, currentValue) => acc + currentValue,
+        0
+      );
+    }
+    result.push(sum);
+  }
+  return result;
 }
 
 // === TEST YOURSELF ===
