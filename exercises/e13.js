@@ -1,4 +1,3 @@
-
 // EXERCISE 13
 // Return an array of bank accounts that have a sum of deposits less than 2000 or no deposits at all
 // Array example: bankAccounts in /data/data.js
@@ -6,10 +5,22 @@
 
 export function getAllAccountsWithSumsOfDepositsLess2000(array) {
   // Your code goes here...
-
+  let result = [];
+  for (const elem of array) {
+    if (elem.hasOwnProperty("deposits")) {
+      let sumOfDeposits = elem.deposits.reduce(
+        (acc, currentValue) => acc + currentValue,
+        0
+      );
+      if (sumOfDeposits < 2000) {
+        result.push(elem);
+      }
+    } else {
+      result.push(elem);
+    }
+  }
+  return result;
 }
-
-
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-13"
